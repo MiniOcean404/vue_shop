@@ -8,6 +8,8 @@
       </div>
       <el-button @click="exit">退出登录</el-button>
     </el-header>
+
+    
     <!-- 页面主体区 -->
     <el-container>
       <!-- 侧边栏 -->
@@ -40,6 +42,8 @@
           </el-submenu>
         </el-menu>
       </el-aside>
+
+
       <!-- 右侧主体区 -->
       <el-main>
           <!-- welcome路由占位符 -->
@@ -81,7 +85,6 @@ export default {
         const {data:res} = await this.$http.get('menus')
         if(res.meta.status !=200) return $message.error(res.meta.msg)
         this.menulist=res.data
-        console.log(res.data);
     },
     toggleCollapse(){
         this.isCollapse = !this.isCollapse
