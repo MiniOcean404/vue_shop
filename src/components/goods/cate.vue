@@ -31,7 +31,7 @@
       >
         <!-- 分类名称  -->
         <template slot="isok" slot-scope="scope">
-          <i class="el-icon-check" v-if="scope.row.cat_deleted === false"></i>
+          <i class="Fel-icon-check" v-if="scope.row.cat_deleted === false"></i>
           <i class="el-icon-close" v-else></i>
         </template>
 
@@ -60,7 +60,7 @@
           :page-sizes="[1, 2, 5, 10]"
           :page-size="cateInfo.pagesize"
           layout="total, sizes, prev, pager, next, jumper"
-          :total=total
+          :total="total"
         >
         </el-pagination>
       </div>
@@ -71,7 +71,7 @@
       title="添加分类"
       :visible.sync="addCateDialogVisible"
       width="50%"
-    :before-close="addCateDialogClosed"
+      :before-close="addCateDialogClosed"
     >
       <el-form
         :model="addCateRuleForm"
@@ -81,23 +81,26 @@
         label-width="100px"
       >
         <el-form-item label="分类名称" prop="cat_name">
-          <el-input
-            v-model="addCateRuleForm.cat_name"
-          ></el-input>
+          <el-input v-model="addCateRuleForm.cat_name"></el-input>
         </el-form-item>
 
-        <el-form-item label="父级分类" >
-          <el-cascader expand-trigger="hover" :options="parentCateList" :props="cascaderProps" v-model="selectedKeys" @change="parentCateChanged" clearable change-on-select>
+        <el-form-item label="父级分类">
+          <el-cascader
+            expand-trigger="hover"
+            :options="parentCateList"
+            :props="cascaderProps"
+            v-model="selectedKeys"
+            @change="parentCateChanged"
+            clearable
+            change-on-select
+          >
           </el-cascader>
         </el-form-item>
       </el-form>
 
-
       <span slot="footer" class="dialog-footer">
         <el-button @click="addCateDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="addCate"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="addCate">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -144,30 +147,34 @@ export default {
           template: 'opt',
         },
       ],
-    //   控制展示关闭的属性 
+      //   控制展示关闭的属性
       addCateDialogVisible: false,
-    //   添加用户表单的数据对象 
-      addCateRuleForm:{
-          cat_name:'',
-          
+      //   添加用户表单的数据对象
+      addCateRuleForm: {
+        cat_name: '',
+
         // 父级分类的Id
         cat_pid: 0,
         // 分类的等级，默认要添加的是1级分类
-        cat_level: 0
+        cat_level: 0,
       },
-      addCateRuleFormRules:{
-          cat_name:[
-          { required: true, message: '请输入分类名称', trigger: 'blur' }
-        ]
+      addCateRuleFormRules: {
+        cat_name: [
+          {
+            required: true,
+            message: '请输入分类名称',
+            trigger: 'blur',
+          },
+        ],
       },
-      parentCateList:[],
-      cascaderProps:{
-          value:'cat_id',
-          label: 'cat_name',
-        children: 'children'
+      parentCateList: [],
+      cascaderProps: {
+        value: 'cat_id',
+        label: 'cat_name',
+        children: 'children',
       },
       // 选中的父级分类的Id数组
-      selectedKeys: []
+      selectedKeys: [],
     }
   },
   methods: {
@@ -193,15 +200,17 @@ export default {
       this.cateInfo.pagenum = newNum
       this.getCateLitst()
     },
-     // 点击按钮，展示添加分类的对话框
+    // 点击按钮，展示添加分类的对话框
     showAddCateDialog() {
-      this.getParentCateList() 
+      this.getParentCateList()
       this.addCateDialogVisible = true
     },
-  // 获取父级分类的数据列表
+    // 获取父级分类的数据列表
     async getParentCateList() {
       const { data: res } = await this.$http.get('categories', {
-        params: { type: 2 }
+        params: {
+          type: 2,
+        },
       })
 
       if (res.meta.status !== 200) {
@@ -227,10 +236,10 @@ export default {
         this.addCateRuleForm.cat_pid = 0
         // 为当前分类的等级赋值
         this.addCateRuleForm.cat_level = 0
-      } 
+      }
     },
     addCate() {
-      this.$refs.addCateRuleFormRef.validate(async valid => {
+      this.$refs.addCateRuleFormRef.validate(async (valid) => {
         if (!valid) return
         const { data: res } = await this.$http.post(
           'categories',
@@ -252,7 +261,7 @@ export default {
       this.selectedKeys = []
       this.addCateRuleForm.cat_level = 0
       this.addCateRuleForm.cat_pid = 0
-    }
+    },
   },
 }
 </script>
@@ -262,6 +271,7 @@ export default {
 .treeTable {
   margin-top: 15px;
 }
+
 .el-cascader {
   width: 100%;
 }
