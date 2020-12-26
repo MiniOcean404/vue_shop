@@ -19,10 +19,9 @@
           </div>
           <!-- 侧边栏菜单区 -->
         <el-menu background-color="#545c64" text-color="#fff" active-text-color="#2e94fc" :unique-opened='true' :collapse="isCollapse" :collapse-transition="false"  router :default-active='activeStatus'>  
-           
-            <!-- 一级菜单  -->
-            <el-submenu :index="item.id.toString()" v-for="item in menulist" :key="item.id">
-                <!-- 一级菜单模板区 -->
+              <!-- 一级菜单  -->
+            <el-submenu :index="item.id.toString()"  v-for="item in menulist" :key="item.id"> 
+                      <!-- 一级菜单模板区 -->
                 <template slot="title">
                     <!-- 图标 -->
                     <i :class="iconsObj[item.id]"></i>
@@ -39,6 +38,8 @@
                         <span>{{subItem.authName}}</span>
                     </template>
                 </el-menu-item>
+    
+        
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -85,6 +86,7 @@ export default {
         const {data:res} = await this.$http.get('menus')
         if(res.meta.status !=200) return $message.error(res.meta.msg)
         this.menulist=res.data
+        console.log(this.menulist);
     },
     toggleCollapse(){
         this.isCollapse = !this.isCollapse
