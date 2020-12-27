@@ -16,7 +16,9 @@ module.exports = {
         styleLibraryName: 'theme-chalk'
       }
     ],
+    // 去除console的插件声明
     ...prodPlugins,
+    // 路由懒加载
     '@babel/plugin-syntax-dynamic-import'
   ],
 }
