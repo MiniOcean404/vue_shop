@@ -2,6 +2,7 @@
 node_modules
 # /dist
 debug.log
+vue_api_server/node_modules
 
 
 # local env files
