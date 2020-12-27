@@ -76,7 +76,7 @@
         } = await this.$http.get('goods', {
           params: this.queryInfo
         })
-        console.log(res);
+
         if (res.meta.status !== 200) return this.$message.error('获取商品列表信息失败')
         this.$message.success('获取商品列表信息成功')
         this.goodList = res.data.goods

@@ -47,7 +47,7 @@
         }
         this.$message.success('更新成功');
         this.rightsList = resRightsList.data
-        console.log(resRightsList);
+
       }
     },
   }

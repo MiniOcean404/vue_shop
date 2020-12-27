@@ -220,7 +220,6 @@ export default {
       this.parentCateList = res.data
     },
     parentCateChanged() {
-      console.log(this.selectedKeys)
       // 如果 selectedKeys 数组中的 length 大于0，证明选中的父级分类
       // 反之，就说明没有选中任何父级分类
       if (this.selectedKeys.length > 0) {
