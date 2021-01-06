@@ -8,34 +8,29 @@ import './plugins/element.js'
 import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 
-
 import 'nprogress/nprogress.css'
 
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
 
 import VueQuillEditor from 'vue-quill-editor'
-Vue.use(VueQuillEditor, /* { default global options } */)
-
-import 'quill/dist/quill.core.css' // import styles
-import 'quill/dist/quill.snow.css' // for snow theme
-import 'quill/dist/quill.bubble.css' // for bubble theme
+Vue.use(VueQuillEditor /* { default global options } */)
 
 import TreeTable from 'vue-table-with-tree-grid'
 Vue.component('tree-table', TreeTable)
 
-import axios from 'axios';
-axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';
+import axios from 'axios'
+axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 axios.interceptors.request.use(config => {
   NProgress.start()
-  config.headers.Authorization = window.sessionStorage.getItem('token');
-  return config;
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
 })
 axios.interceptors.response.use(config => {
   NProgress.done()
-  return config;
+  return config
 })
-Vue.prototype.$http = axios;
+Vue.prototype.$http = axios
 
 Vue.filter('dateFormat', function(originVal) {
   const dt = new Date(originVal)
@@ -52,7 +47,6 @@ Vue.filter('dateFormat', function(originVal) {
 })
 
 Vue.config.productionTip = false
-
 
 new Vue({
   router,
