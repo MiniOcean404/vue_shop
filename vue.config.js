@@ -1,6 +1,6 @@
 module.exports = {
   // 打包文件部署github需要设置这个
-  // publicPath: process.env.NODE_ENV === 'production' ? '/vue_shop/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/vue_shop/' : '/',
   chainWebpack: config => {
     // 发布模式
     config.when(process.env.NODE_ENV === 'production', config => {
