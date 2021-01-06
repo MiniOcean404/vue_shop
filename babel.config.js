@@ -5,9 +5,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset'
-  ],
+  presets: ['@vue/cli-plugin-babel/preset'],
   plugins: [
     [
       'component',
@@ -18,7 +16,8 @@ module.exports = {
     ],
     // 去除console的插件声明
     ...prodPlugins,
-    // 路由懒加载
+
+    // 路由懒加载一起加快访问速度
     '@babel/plugin-syntax-dynamic-import'
-  ],
+  ]
 }
