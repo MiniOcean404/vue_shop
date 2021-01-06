@@ -12,19 +12,6 @@
 
   <% if(htmlWebpackPlugin.options.isProd){ %>
 
-  <!-- 富文本编辑器 的样式表文件 -->
-  <link rel="stylesheet" href="path/to/quill.core.css" />
-  <link rel="stylesheet" href="path/to/quill.snow.css" />
-  <link rel="stylesheet" href="path/to/quill.bubble.css" />
-  <script type="text/javascript" src="path/to/quill.js"></script>
-  <script type="text/javascript" src="path/to/vue.min.js"></script>
-  <script type="text/javascript" src="path/to/dist/vue-quill-editor.js"></script>
-  <script type="text/javascript">
-    Vue.use(window.VueQuillEditor)
-  </script>
-
-
-
   <!-- nprogress 的样式表文件 -->
   <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" />
   <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
@@ -45,8 +32,8 @@
 
 
   <!-- element-ui 的 js 文件和样式表文件 -->
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.14.1/theme-chalk/index.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.14.1/index.min.js"></script>
   <% } %>
 
 </head>
