@@ -13,11 +13,15 @@
   <% if(htmlWebpackPlugin.options.isProd){ %>
 
   <!-- 富文本编辑器 的样式表文件 -->
-  <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
-  <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
-  <!-- 富文本编辑器的 js 文件 -->
-  <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>
-  <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>
+  <link rel="stylesheet" href="path/to/quill.core.css" />
+  <link rel="stylesheet" href="path/to/quill.snow.css" />
+  <link rel="stylesheet" href="path/to/quill.bubble.css" />
+  <script type="text/javascript" src="path/to/quill.js"></script>
+  <script type="text/javascript" src="path/to/vue.min.js"></script>
+  <script type="text/javascript" src="path/to/dist/vue-quill-editor.js"></script>
+  <script type="text/javascript">
+    Vue.use(window.VueQuillEditor)
+  </script>
 
 
 
@@ -38,7 +42,7 @@
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts-en.common.min.js"></script>
 
 
-  
+
 
   <!-- element-ui 的 js 文件和样式表文件 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
